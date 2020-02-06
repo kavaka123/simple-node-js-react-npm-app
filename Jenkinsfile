@@ -10,17 +10,26 @@ pipeline{
     }
     stages {
         stage('Build') {
-            sh 'npm install'
+            steps {
+                sh 'npm install'
+            }
+       
         }
 
         stage('Test') {
-            sh './jenkins/scripts/test.sh'
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+            
         }
 
         stage('Deliver') {
-            sh './jenkins/scripts/deliver.sh'
-            input message: 'Finished checking the website? (Click Proceed to continue)'
-            sh './jenkins/scripts/kill.sh'
+            steps {
+                    sh './jenkins/scripts/deliver.sh'
+                    input message: 'Finished checking the website? (Click Proceed to continue)'
+                    sh './jenkins/scripts/kill.sh'
+            }
+
         }
     }
 }
