@@ -12,7 +12,7 @@ pipeline{
         stage('Build') {
             steps {
                 sh 'echo "present dir: $PWD"'
-                sh 'npm install'
+                // sh 'npm install'
             }
        
         }
